@@ -298,32 +298,75 @@ https://www.tooplate.com/view/2120-ben-resume
 
 
 
-  /*---------------------------------------
-     HERO                
+/*---------------------------------------
+     HERO
   -----------------------------------------*/
 
-  .hero-title,
-  .email-link {
+.hero-title {
     background: var(--dark-color);
     border-radius: var(--border-radius-medium);
     color: var(--white-color);
     display: inline-block;
     margin: 0.5rem 0;
     padding: 0.5rem 2rem 1.5rem 2rem;
-	font-size: 2.2em;
-  }
+    font-size: 2.2em;
+}
 
-  .email-link {
-    background: var(--primary-color);
+/* Chat Box Styling */
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px; /* Slightly larger to match profile image scale */
+    padding: 20px; /* Increased padding for better spacing */
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Common message bubble styles */
+.message {
+    max-width: 80%;
+    padding: 16px 20px; /* Increased padding for better proportion */
+    margin: 10px 0;
+    border-radius: 20px;
+    font-size: clamp(18px, 2vw, 24px); /* Dynamic font scaling */
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+/* Employer messages (left-aligned) */
+.message.employer {
+    align-self: flex-start;
+    background-color: var(--primary-color);
     color: var(--dark-color);
-    font-size: var(--h4-font-size);
-    padding: 0.5rem 2rem 1rem 2rem;
-  }
+    text-align: left;
+}
 
-  .email-link:hover {
+/* Aidan's messages (right-aligned) */
+.message.aidan {
+    align-self: flex-end;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-align: left;
+}
+
+/* Style for email link inside the chat */
+.message.aidan a.email-link {
+    background: var(--primary-color);
+    color: var(--white-color);
+    text-decoration: underline;
+    padding: 0;
+    font-size: inherit;
+    display: inline;
+}
+
+/* Email link hover effect */
+.email-link:hover {
     background: var(--dark-color);
     color: var(--white-color);
-  }
+}
+
 
 
   /*---------------------------------------
