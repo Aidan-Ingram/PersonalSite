@@ -395,9 +395,14 @@ https://www.tooplate.com/view/2120-ben-resume
     background: #f9f9f9;
   }
 
-  .testimonials-image {
+.testimonials-image {
+    width: 150px; /* Adjust as needed */
+    height: auto; /* Maintains aspect ratio */
     margin: 0 1rem 1rem 1rem;
-  }
+    object-fit: cover; /* Ensures the image looks good if cropped */
+    border-radius: 8px; /* Optional: adds rounded corners */
+}
+
 
   .testimonials-image img {
     border-radius: var(--border-radius-medium);
