@@ -31,9 +31,9 @@ https://www.tooplate.com/view/2120-ben-resume
   }
 
   :root {
-    --primary-color:        #ffd500;
+    --primary-color:        #89CFF0;
     --white-color:          #ffffff;
-    --dark-color:           #010101;
+    --dark-color:           #212121;
     --menu-bg-color:        #212529;
 
     --gray-color:           #909090;
@@ -164,7 +164,7 @@ https://www.tooplate.com/view/2120-ben-resume
 
   a:hover  {
     color: var(--dark-color);
-    text-decoration: none;
+    text-decoration: underline;
   }
 
 
@@ -185,7 +185,7 @@ https://www.tooplate.com/view/2120-ben-resume
   }
 
   .navbar.scroll {
-    background: var(--menu-bg-color);
+    background: var(--dark-color);
     padding: 0.5rem 1rem;
     position: fixed;
     opacity: 1;
@@ -348,10 +348,14 @@ https://www.tooplate.com/view/2120-ben-resume
     margin-right: 1rem;
   }
 
+.github-link {
+    text-decoration: underline;
+}
 
-  /*---------------------------------------
-     FAQ                 
-  -----------------------------------------*/
+
+/*---------------------------------------
+   FAQ
+-----------------------------------------*/
 
   .faq .card-header {
     padding: 0;
