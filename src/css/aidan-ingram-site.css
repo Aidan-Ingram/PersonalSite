@@ -62,11 +62,12 @@ https://www.tooplate.com/view/2120-ben-resume
 
   body {
     font-family: var(--base-font-family);
+      padding-top: 80px;
   }
 
 
   /*---------------------------------------
-     TYPOGRAPHY              
+     TYPOGRAPHY
   -----------------------------------------*/
 
   h1 {
@@ -140,7 +141,7 @@ https://www.tooplate.com/view/2120-ben-resume
 
 
   /*---------------------------------------
-     GENERAL               
+     GENERAL
   -----------------------------------------*/
 
   * {
@@ -169,27 +170,29 @@ https://www.tooplate.com/view/2120-ben-resume
 
 
   /*---------------------------------------
-     MENU                
+     MENU
   -----------------------------------------*/
 
-  .navbar {
-    background: transparent;
+/* Navbar - Always Visible on Page Load */
+.navbar {
+    background: var(--dark-color);
     padding: 0.3rem 1rem;
     transition: all 300ms ease-in-out;
-    position: absolute;
+    position: fixed; /* Changed from absolute to fixed */
     z-index: 99;
     top: 0;
     right: 0;
     left: 0;
-    opacity: 0;
-  }
+    opacity: 1; /* Set to 1 so it's visible on page load */
+}
 
-  .navbar.scroll {
+/* When scrolled down, navbar becomes solid */
+.navbar.scroll {
     background: var(--dark-color);
     padding: 0.5rem 1rem;
-    position: fixed;
-    opacity: 1;
-  }
+    opacity: 1; /* Ensure it remains visible */
+}
+
 
   .navbar-brand {
     color: var(--white-color);
@@ -213,12 +216,12 @@ https://www.tooplate.com/view/2120-ben-resume
     padding: 0;
   }
 
-  .nav-item .nav-link.active, 
+  .nav-item .nav-link.active,
   .nav-item .nav-link:hover {
     color: var(--gray-color);
   }
 
-  .nav-item .nav-link.active, 
+  .nav-item .nav-link.active,
   .nav-item .nav-link:hover {
     border-bottom-color: var(--primary-color);
   }
@@ -296,11 +299,57 @@ https://www.tooplate.com/view/2120-ben-resume
     top: 8px;
   }
 
+/* Mobile-friendly navbar */
+@media screen and (max-width: 991px) {
+    .navbar {
+        padding: 0.8rem 1rem; /* Slightly larger padding for touch-friendly tap */
+    }
+
+    .navbar-brand {
+        font-size: 20px; /* Make brand text smaller */
+    }
+
+    .navbar-nav {
+        flex-direction: column; /* Stack links on mobile */
+        text-align: center; /* Center align links */
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding: 10px 15px; /* Increase touch area */
+        font-size: 18px; /* Increase readability */
+    }
+
+    .navbar-toggler {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navbar-collapse {
+        background: var(--dark-color); /* Ensures dropdown has a solid background */
+        padding: 10px 0;
+        border-radius: 10px;
+    }
+}
 
 
 /*---------------------------------------
      HERO
   -----------------------------------------*/
+/* Profile picture scaling */
+.about-image {
+    width: 100%; /* Makes the image responsive */
+    max-width: 300px; /* Prevents it from getting too large on big screens */
+    height: auto; /* Maintains aspect ratio */
+    display: block;
+    margin: 0 auto; /* Centers the image */
+}
+
+/* Adjust image size for smaller screens */
+@media screen and (max-width: 768px) {
+    .about-image {
+        max-width: 200px; /* Reduce image size on smaller screens */
+    }
+}
 
 .hero-title {
     background: var(--dark-color);
@@ -370,9 +419,9 @@ https://www.tooplate.com/view/2120-ben-resume
 
 
   /*---------------------------------------
-     ABOUT                
+     ABOUT
   -----------------------------------------*/
-  
+
   .about-third {
 	  margin: 2.2em -0.8em;
   }
@@ -413,7 +462,7 @@ https://www.tooplate.com/view/2120-ben-resume
     padding: 1rem 2rem;
   }
 
-  .faq .btn-link:focus, 
+  .faq .btn-link:focus,
   .faq .btn-link:hover {
     color: var(--dark-color);
     text-decoration: none;
@@ -431,7 +480,7 @@ https://www.tooplate.com/view/2120-ben-resume
 
 
   /*---------------------------------------
-     TESTIMONIALS               
+     TESTIMONIALS
   -----------------------------------------*/
 
   .testimonials {
@@ -469,16 +518,16 @@ https://www.tooplate.com/view/2120-ben-resume
     margin: 5px;
   }
 
-  .testimonials .owl-theme .owl-dots .owl-dot.active span, 
+  .testimonials .owl-theme .owl-dots .owl-dot.active span,
   .testimonials .owl-theme .owl-dots .owl-dot:hover span {
     background: var(--primary-color);
   }
 
 
   /*---------------------------------------
-     CONTACT               
+     CONTACT
   -----------------------------------------*/
-  
+
   .contact-form .form-control {
     background: transparent;
     border: none;
@@ -570,10 +619,103 @@ https://www.tooplate.com/view/2120-ben-resume
     font-size: var(--base-font-size);
   }
 
+/* Background overlay */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    backdrop-filter: blur(5px); /* Blurred background effect */
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
 
-  /*---------------------------------------
-     SOCIAL LINKS              
-  -----------------------------------------*/
+/* Centered pop-up box */
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 320px; /* More square shape */
+    height: 280px; /* Adjusted for squareness */
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -55%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+/* Checkmark icon */
+.popup-icon {
+    font-size: 48px;
+    color: #28a745; /* Green checkmark */
+    margin-bottom: 10px;
+}
+
+/* Main message */
+.popup-message {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Subtext under main message */
+.popup-subtext {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Button styling */
+.popup-content button {
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.popup-content button:hover {
+    background: #0056b3;
+}
+
+/* Show pop-up effect */
+.popup.show {
+    display: block;
+    opacity: 1;
+}
+
+.popup-error .popup-icon i {
+    color: #dc3545; /* Red for error */
+}
+
+
+/*---------------------------------------
+   SOCIAL LINKS
+-----------------------------------------*/
 
   .social-links {
     margin: 40px 0;
@@ -598,7 +740,7 @@ https://www.tooplate.com/view/2120-ben-resume
 
 
   /*---------------------------------------
-     RESPONSIVE STYLES              
+     RESPONSIVE STYLES
   -----------------------------------------*/
 
   @media screen and (max-width: 1200px) {

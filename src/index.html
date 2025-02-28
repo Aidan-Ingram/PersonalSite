@@ -82,7 +82,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 
@@ -92,7 +91,7 @@
             <div class="row">
 
                 <div class="col-lg-6 col-md-6 col-12">
-                    <h3 class="mb-4">Relevant Information</h3>
+                    <h3 class="mb-4">About Me</h3>
 
                     <ul class="mt-4 mb-5 mb-lg-0 profile-list list-unstyled">
                         <li><strong>Full Name:</strong>Aidan Ingram </li>
@@ -104,9 +103,9 @@
 
                         <li><strong>Email:</strong>aidan.ingram03@gmail.com</li>
 
-                        <li><strong>Work Authorization:</strong>I am a United States Citizen</li>
+                        <li><strong>Work Authorization:</strong>United States Citizen</li>
 
-                        <li><strong>Disability Discolsure:</strong>I am not disabled</li>
+                        <li><strong>ADA:</strong>N/A</li>
                     </ul>
                 </div>
 
@@ -302,7 +301,7 @@
                         </div>
                     </div>
 
-                    <span class="faq-info-text">Have additional questions? Send an email message to <strong>aidan.ingram03@gmail.com</strong></span>
+                    <span class="faq-info-text">Have additional questions? Contact me via the form below!</span>
 
                 </div>
 
@@ -317,28 +316,43 @@
         <div class="row">
 
           <div class="col-lg-6 col-md-6 col-12">
-            <form action="mailto:aidan.ingram03@gmail.com" method="get" class="contact-form webform"  role="form">
-                
-                <div class="form-group d-flex flex-column-reverse">
-                    <input type="text" class="form-control" name="cf-name" id="cf-name" placeholder="Your Name">
+              <form id="contact-form" class="contact-form webform">
+                  <div class="form-group d-flex flex-column-reverse">
+                      <input type="text" class="form-control" name="first_name" id="first_name" placeholder="" required>
+                      <label for="first_name" class="webform-label">First Name</label>
+                  </div>
 
-                    <label for="cf-name" class="webform-label">Full Name</label>
-                </div>
+                  <div class="form-group d-flex flex-column-reverse">
+                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="" required>
+                      <label for="last_name" class="webform-label">Last Name</label>
+                  </div>
 
-                <div class="form-group d-flex flex-column-reverse">
-                    <input type="email" class="form-control" name="cf-email" id="cf-email" placeholder="Your Email">
+                  <div class="form-group d-flex flex-column-reverse">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="" required>
+                      <label for="email" class="webform-label">Your Email</label>
+                  </div>
 
-                    <label for="cf-email" class="webform-label">Your Email</label>
-                </div>
+                  <div class="form-group d-flex flex-column-reverse">
+                      <textarea class="form-control" rows="5" name="message" id="message" placeholder="" required></textarea>
+                      <label for="message" class="webform-label">Message</label>
+                  </div>
 
-                <div class="form-group d-flex flex-column-reverse">
-                    <textarea class="form-control" rows="5" name="cf-message" id="cf-message" placeholder="Your Message"></textarea>
+                  <button type="submit" class="form-control" id="submit-button">Send</button>
+              </form>
+              <div id="custom-popup" class="popup">
+                  <div class="popup-content">
+                      <div class="popup-icon" id="popup-icon">
+                          <i class="fas fa-check-circle"></i> <!-- Default success icon -->
+                      </div>
+                      <p id="popup-message" class="popup-message"></p>
+                      <p id="popup-subtext" class="popup-subtext">I will reply to you as soon as I can.</p>
+                      <button id="popup-button" onclick="closePopup()">Great!</button>
+                  </div>
+              </div>
 
-                    <label for="cf-message" class="webform-label">Message</label>
-                </div>
 
-                <button type="submit" class="form-control" id="submit-button" name="submit">Send</button>
-            </form>
+
+
           </div>
 
             <div class="mx-auto col-lg-4 col-md-6 col-12">
@@ -346,12 +360,16 @@
 
                 <p class="mb-1">913-424-2908</p>
 
-                <p>
+                <p class="mb-1">
                     <a href="mailto:aidan.ingram03@gmail.com?subject=Job Offer for Aidan Ingram">
                         aidan.ingram03@gmail.com
                     <i class="fas fa-arrow-right custom-icon"></i>
                     </a>
                 </p>
+                <p class="mb-1"><a href="mailto:aidan.ingram@ku.edu?subject=Job Offer for Aidan Ingram">
+                    aidan.ingram@ku.edu
+                    <i class="fas fa-arrow-right custom-icon"></i>
+                </a></p>
 
                 <ul class="social-links mt-2">
                     <li><a href="https://www.linkedin.com/in/aidan-ingram" rel="noopener" class="fab fa-linkedin"></a></li>
@@ -367,7 +385,8 @@
     </section>
 
      <!-- SCRIPTS -->
-     <script src="js/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="js/jquery.min.js"></script>
      <script src="js/bootstrap.min.js"></script>
      <script src="js/smoothscroll.js"></script>
      <script src="js/owl.carousel.min.js"></script>
