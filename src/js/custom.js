@@ -1,6 +1,9 @@
 $(function () {
     'use strict';
 
+    // ==============================
+    // Navbar Scroll Behavior
+    // ==============================
     let lastScrollTop = 0;
     const navbar = $(".navbar");
     let scrollThreshold = 50; // Minimum scroll distance before hiding
@@ -14,7 +17,7 @@ $(function () {
         if (Math.abs(currentScroll - lastScrollTop) > scrollThreshold) {
             if (currentScroll > lastScrollTop) {
                 // Scrolling down - hide navbar
-                navbar.css("top", "-80px"); // Adjust height as needed
+                navbar.css("top", "-80px");
             } else {
                 // Scrolling up - show navbar
                 navbar.css("top", "0");
@@ -35,21 +38,9 @@ $(function () {
         $(".navbar-collapse").collapse("hide");
     });
 
-    // TESTIMONIALS CAROUSEL
-    if ($("#testimonials-carousel").length) {
-        $("#testimonials-carousel").owlCarousel({
-            loop: true,
-            margin: 10,
-            responsiveClass: true,
-            responsive: {
-                0: { items: 1 },
-                900: { items: 2 },
-                1200: { items: 3, loop: false }
-            }
-        });
-    }
-
-    // SMOOTHSCROLL
+    // ==============================
+    // Smooth Scrolling for Navbar Links
+    // ==============================
     $('.navbar .nav-link').on('click', function (event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
@@ -57,8 +48,31 @@ $(function () {
         }, 1000);
         event.preventDefault();
     });
+    // ==============================
+// Owl Carousel Initialization
+// ==============================
+    $('#testimonials-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1,
+            },
+            900:{
+                items:2,
+            },
+            1200:{
+                items:3,
+                loop:false
+            }
+        }
+    })
 
-    // Initialize EmailJS
+
+    // ==============================
+    // EmailJS Form Submission
+    // ==============================
     emailjs.init("kZzN6-PESS9XVMHoB");
 
     $("#contact-form").on("submit", function (event) {
@@ -91,6 +105,9 @@ $(function () {
             });
     });
 
+    // ==============================
+    // Popup Confirmation Handling
+    // ==============================
     function showPopup(message, subtext, type) {
         let popup = $("#custom-popup");
         let popupMessage = $("#popup-message");
@@ -104,11 +121,11 @@ $(function () {
         popupSubtext.text(subtext);
 
         if (type === "success") {
-            popupIcon.html(`<i class="fas fa-check-circle"></i>`);
+            popupIcon.html(`<i class="fas fa-check-circle" style="color: green; font-size: 48px;"></i>`);
             popup.addClass("popup-success");
             popupButton.text("Great!");
         } else {
-            popupIcon.html(`<i class="fas fa-times-circle"></i>`);
+            popupIcon.html(`<i class="fas fa-times-circle" style="color: red; font-size: 48px;"></i>`);
             popup.addClass("popup-error");
             popupButton.text("Try Again");
         }

@@ -106,7 +106,7 @@ Aidan Ingram's Personal Website CSS
   }
 
   .section-padding {
-    padding: 6rem 0;
+    padding: 3rem 0;
   }
 
   .custom-icon {
@@ -119,27 +119,71 @@ Aidan Ingram's Personal Website CSS
 
 
   /* CUSTOM BUTTON */
-  .custom-btn {
-    background: var(--dark-color);
+.custom-btn {
+    background: var(--primary-color);
     border: none;
     border-radius: var(--border-radius-medium);
-    color: var(--white-color);
+    color: var(--dark-color);
     letter-spacing: 0.2px;
     padding: 6px 36px 10px 36px;
     font-size: var(--button-font-size);
     white-space: nowrap;
-  }
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out; /* Smooth transition */
+}
 
-  .custom-btn:hover,
-  .custom-btn:focus {
-    color: var(--dark-color);
+.custom-btn:hover,
+.custom-btn:focus {
+    background: var(--white-color) !important; /* Turns white on hover */
+    color: var(--dark-color) !important; /* Keeps text dark for contrast */
+}
+.custom-btn2 {
     background: var(--primary-color);
-  }
+    border: none;
+    border-radius: var(--border-radius-medium);
+    color: var(--dark-color);
+    letter-spacing: 0.2px;
+    padding: 6px 36px 10px 36px;
+    font-size: var(--button-font-size);
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    width: 100%
+}
+
+.custom-btn2:hover,
+.custom-btn2:focus {
+    background: var(--dark-color) !important; /* Changes background on hover */
+    color: var(--white-color) !important; /* Ensures text remains white */
+    text-decoration: none !important; /* Prevents underlining on hover */
+}
+/* Ensures form submit button looks like custom-btn */
+.contact-form .form-control[type="submit"] {
+    background: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius-medium);
+    color: var(--dark-color);
+    font-size: var(--button-font-size);
+    padding: 10px 36px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    width: 100%; /* Makes sure it behaves properly inside the form */
+    display: block;
+}
+
+/* Hover effect */
+.contact-form .form-control[type="submit"]:hover,
+.contact-form .form-control[type="submit"]:focus {
+    background: var(--white-color);
+    color: var(--dark-color);
+    text-decoration: none;
+}
 
 
-  /*---------------------------------------
-     GENERAL
-  -----------------------------------------*/
+
+/*---------------------------------------
+   GENERAL
+-----------------------------------------*/
 
   * {
     -webkit-box-sizing: border-box;
@@ -190,14 +234,36 @@ Aidan Ingram's Personal Website CSS
     opacity: 1; /* Ensure it remains visible */
 }
 
-
-  .navbar-brand {
-    color: var(--white-color);
+.navbar-brand {
+    color: var(--white-color); /* Default text color */
     font-weight: var(--font-weight-light);
     font-size: var(--h4-font-size);
-  }
+    position: relative; /* Needed for the pseudo-element */
+    transition: color 0.3s ease-in-out; /* Smooth text color transition */
+}
 
-  .navbar .custom-btn {
+.navbar-brand:hover {
+    color: var(--white-color); /* Matches other links */
+}
+
+.navbar-brand::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0px; /* Adjust spacing from text */
+    width: 100%;
+    height: 2px; /* Thickness of underline */
+    background-color: var(--primary-color); /* Matches hover color */
+    opacity: 0; /* Initially invisible */
+    transition: opacity 0.3s ease-in-out; /* Fade-in effect */
+}
+
+.navbar-brand:hover::after {
+    opacity: 1; /* Fade in */
+}
+
+
+.navbar .custom-btn {
     background: var(--primary-color);
     color: var(--dark-color);
   }
@@ -305,6 +371,11 @@ Aidan Ingram's Personal Website CSS
     .navbar-brand {
         font-size: 20px; /* Make brand text smaller */
     }
+
+    .navbar-brand:hover {
+        color: var(--primary-color); /* Ensure this contrasts with the navbar background */
+    }
+
 
     .navbar-nav {
         flex-direction: column; /* Stack links on mobile */
@@ -684,15 +755,17 @@ Aidan Ingram's Personal Website CSS
     background: white;
     padding: 25px;
     border-radius: 10px;
-    width: 320px; /* More square shape */
-    height: 280px; /* Adjusted for squareness */
+    width: 320px; /* Square shape */
+    min-height: 300px; /* Increased height to prevent overflow */
     text-align: center;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
     animation: slideIn 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center; /* Ensures content stays centered */
+    align-items: center; /* Centers the button properly */
 }
+
 
 /* Slide-in animation */
 @keyframes slideIn {
@@ -729,16 +802,22 @@ Aidan Ingram's Personal Website CSS
 
 /* Button styling */
 .popup-content button {
-    padding: 10px;
-    background: #007bff;
+    padding: 12px 20px; /* Ensures a comfortable click area */
+    width: 80%; /* Keeps the button within bounds */
+    max-width: 200px; /* Prevents overflow */
+    background: #28a745;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 16px;
-    transition: background 0.3s;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+    white-space: nowrap; /* Prevents button text from wrapping */
+    text-align: center;
 }
 
+/* Button hover effect */
 .popup-content button:hover {
     background: #0056b3;
 }
@@ -752,6 +831,36 @@ Aidan Ingram's Personal Website CSS
 .popup-error .popup-icon i {
     color: #dc3545; /* Red for error */
 }
+@media (max-width: 400px) {
+    .popup-content {
+        width: 90%; /* Adjust width for smaller screens */
+        min-height: 320px; /* Ensure enough space */
+    }
+
+    .popup-content button {
+        width: 100%; /* Full width on smaller screens */
+        max-width: 250px;
+        font-size: 14px;
+    }
+}
+/* Success Popup */
+.popup-success .popup-content button {
+    background: #28a745; /* Green for success */
+}
+
+.popup-success .popup-content button:hover {
+    background: #218838;
+}
+
+/* Error Popup */
+.popup-error .popup-content button {
+    background: #dc3545; /* Red for error */
+}
+
+.popup-error .popup-content button:hover {
+    background: #c82333;
+}
+
 
 
 /*---------------------------------------
@@ -850,6 +959,120 @@ Aidan Ingram's Personal Website CSS
     }
   }
 
-/*---------------------------------------
-   CONTACT PAGE
------------------------------------------*/
+/* Container to hold both sections */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem; /* Creates separation between the two sections */
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+}
+
+/* Contact Form Box */
+.contact-form-section {
+    flex: 1;
+    max-width: 600px;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Info Box */
+/* Contact Info Section - 2x2 Grid */
+/* Contact Info Section - Dark Slate Gray */
+/* Contact Info Section - Always a 2x2 Grid */
+.contact-info-section {
+    background: #2C2F33; /* Dark Slate Gray */
+    color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Always 2 columns */
+    grid-template-rows: repeat(2, 1fr); /* Always 2 rows */
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto; /* Centering */
+}
+
+/* Individual Contact Boxes */
+.contact-info-box {
+    background: rgba(255, 255, 255, 0.1); /* Subtle contrast */
+    padding: 15px; /* Reduced padding for mobile */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icons */
+.contact-info-box i {
+    font-size: 28px; /* Slightly smaller on mobile */
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+/* Titles */
+.contact-info-box h3 {
+    font-size: 18px; /* Slightly smaller */
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+/* Text */
+.contact-info-box p {
+    font-size: 13px; /* Smaller text for mobile */
+    margin: 3px 0;
+}
+
+/* Links */
+.contact-info-box a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+}
+
+.contact-info-box a:hover {
+    color: var(--primary-color);
+}
+
+/* ✨ Keep the 2x2 Grid on Mobile but Scale It Down */
+@media (max-width: 600px) {
+    .contact-info-section {
+        grid-template-columns: repeat(2, 1fr); /* Keep 2x2 grid */
+        gap: 0.5rem; /* Reduce spacing */
+        padding: 1rem; /* Less padding */
+    }
+
+    .contact-info-box {
+        padding: 10px; /* Smaller padding */
+    }
+
+    .contact-info-box i {
+        font-size: 24px; /* Smaller icons */
+    }
+
+    .contact-info-box h3 {
+        font-size: 16px; /* Smaller headings */
+    }
+
+    .contact-info-box p {
+        font-size: 12px; /* Small but readable */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
