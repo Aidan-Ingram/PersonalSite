@@ -698,6 +698,17 @@ body {
     display: inline; /* Forces the link to stay in the same line */
 }
 
+/* Ensure thumbnails look uniform */
+#projects .carousel-item img {
+    max-height: 300px; /* Adjust as needed */
+    object-fit: cover; /* Prevents distortion */
+    border-radius: 10px; /* Optional rounded corners */
+    transition: transform 0.3s ease-in-out;
+}
+
+#projects .carousel-item a:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
 
 
   /*---------------------------------------
