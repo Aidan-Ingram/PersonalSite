@@ -274,10 +274,11 @@ Aidan Ingram's Personal Website CSS
     color: var(--white-color);
   }
 
-  .navbar-expand-lg .navbar-nav .nav-link {
-    margin: 0 1.5rem;
-    padding: 0;
-  }
+.navbar-expand-lg .navbar-nav .nav-link {
+    margin: 0; /* Reset margin */
+    padding: 0.5rem 1rem; /* Adjust padding for better spacing */
+}
+
 
   .nav-item .nav-link.active,
   .nav-item .nav-link:hover {
@@ -361,43 +362,64 @@ Aidan Ingram's Personal Website CSS
   .navbar-toggler .navbar-toggler-icon::after {
     top: 8px;
   }
+.navbar-expand-lg .navbar-nav {
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center; /* Aligns items vertically */
+    width: 100%; /* Ensures it spans the full width */
+}
+
 
 /* Mobile-friendly navbar */
 @media screen and (max-width: 991px) {
-    .navbar {
-        padding: 0.8rem 1rem; /* Slightly larger padding for touch-friendly tap */
-    }
-
+    /* Reduce navbar brand size */
     .navbar-brand {
-        font-size: 20px; /* Make brand text smaller */
+        font-size: 1.2rem; /* Smaller font for mobile */
+        white-space: nowrap; /* Prevents wrapping */
+        max-width: 80%; /* Ensures it doesn't take up too much space */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Adds "..." if it's too long */
     }
 
-    .navbar-brand:hover {
-        color: var(--primary-color); /* Ensure this contrasts with the navbar background */
+    /* Adjust navbar spacing */
+    .navbar {
+        padding: 0.8rem 1rem; /* Slightly larger padding for tap-friendly touch */
     }
 
-
+    /* Ensure nav links are stacked and centered */
     .navbar-nav {
-        flex-direction: column; /* Stack links on mobile */
-        text-align: center; /* Center align links */
+        flex-direction: column; /* Stacks links vertically */
+        text-align: center;
+        width: 100%;
     }
 
-    .navbar-expand-lg .navbar-nav .nav-link {
-        padding: 10px 15px; /* Increase touch area */
-        font-size: 18px; /* Increase readability */
+    /* Ensure nav items fill width */
+    .navbar-nav .nav-item {
+        width: 100%;
     }
 
+    /* Add padding for better touch interaction */
+    .navbar-nav .nav-link {
+        padding: 10px;
+        font-size: 1rem; /* Slightly smaller for mobile */
+    }
+
+    /* Style the navbar-toggler button */
     .navbar-toggler {
         width: 40px;
         height: 40px;
+        margin-left: auto; /* Keeps it aligned to the right */
     }
 
+    /* Style navbar dropdown */
     .navbar-collapse {
-        background: var(--dark-color); /* Ensures dropdown has a solid background */
+        background: var(--dark-color); /* Ensures solid background */
         padding: 10px 0;
         border-radius: 10px;
     }
 }
+
+
 
 
 /*---------------------------------------
@@ -593,11 +615,18 @@ Aidan Ingram's Personal Website CSS
     padding: 2rem;
   }
 
-  .faq-info-text {
+.faq-info-text {
     font-size: var(--base-font-size);
     display: block;
     margin: 1.5rem 2rem 0 2rem;
-  }
+}
+
+.faq-info-text a {
+    font-size: inherit; /* Keeps the same font size as the surrounding text */
+    text-decoration: underline; /* Ensures the link is underlined */
+    display: inline; /* Forces the link to stay in the same line */
+}
+
 
 
   /*---------------------------------------
@@ -919,14 +948,14 @@ Aidan Ingram's Personal Website CSS
 /* Quick Links & Socials Row */
 .footer .footer-links {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 30px;
-    width: 100%;
+    width: 90%;
     max-width: 600px;
-    margin-bottom: 5px; /* Reduced unnecessary spacing */
+    margin: 0 auto;
+    gap: 40px; /* Add more space between Quick Links & Follow Me */
 }
+
 
 /* Quick Links Styling */
 .footer .list-unstyled {
@@ -1029,14 +1058,22 @@ Aidan Ingram's Personal Website CSS
         text-align: left; /* Ensures alignment consistency */
     }
 
-    /* Quick Links */
+    /* Quick Links - Reduce Spacing */
     .footer .list-unstyled {
         display: flex;
-        gap: 12px; /* Adds space between the links */
+        flex-direction: column; /* Stack them vertically */
+        align-items: center;
         padding: 0;
         list-style: none;
         margin: 0;
     }
+
+    .footer .list-unstyled li {
+        margin: 2px 0; /* Minimal spacing between links */
+        padding: 0; /* Ensures no extra padding */
+        line-height: 1.2; /* Keeps the text compact */
+    }
+
 
     /* Social Media Section */
     .footer .socials {
@@ -1068,6 +1105,7 @@ Aidan Ingram's Personal Website CSS
         font-size: 11px;
     }
 }
+
 
 
 
