@@ -70,6 +70,35 @@ $(function () {
             }
         }
     });
+    $(document).ready(function () {
+        // Check if the URL contains a tab parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const tab = urlParams.get("tab");
+
+        if (tab) {
+            setTab(tab);
+        }
+    });
+
+// Function to switch to the specified tab
+    function setTab(tabName) {
+        let tabElement = $(`#${tabName}-tab`);
+        let tabContent = $(`#${tabName}`);
+
+        if (tabElement.length && tabContent.length) {
+            // Deactivate all tabs
+            $(".nav-link").removeClass("active");
+            $(".tab-pane").removeClass("show active");
+
+            // Activate the selected tab
+            tabElement.addClass("active");
+            tabContent.addClass("show active");
+
+            // Ensure Bootstrap updates the active tab
+            tabElement.tab('show');
+        }
+    }
+
 
 
     // ==============================
