@@ -56,7 +56,7 @@ Aidan Ingram's Personal Website CSS
   }
 
 body {
-    background-color: var(--background-color); /* Replace with your secondary or muted theme color */
+    background-color: #f8f9fa; /* Softer off-white */; /* Replace with your secondary or muted theme color */
     border: 10px solid var(--dark-color); /* Creates a subtle frame */
     font-family: var(--base-font-family);
     padding-top: 80px; /* Keeps navbar from overlapping content */
@@ -698,17 +698,122 @@ body {
     display: inline; /* Forces the link to stay in the same line */
 }
 
-/* Ensure thumbnails look uniform */
-#projects .carousel-item img {
-    max-height: 300px; /* Adjust as needed */
-    object-fit: cover; /* Prevents distortion */
-    border-radius: 10px; /* Optional rounded corners */
-    transition: transform 0.3s ease-in-out;
+/* ========================= */
+/* PROJECT CAROUSEL STYLES (Final Fix) */
+/* ========================= */
+
+#projectCarousel {
+    max-width: 100%;
+    height: 450px;
+    overflow: hidden;
+    background-color: transparent; /* Ensure no white background */
+    border: none; /* Remove any unintended borders */
+    padding: 0; /* No extra spacing */
+    margin: 0; /* No extra margins */
 }
 
-#projects .carousel-item a:hover img {
-    transform: scale(1.05); /* Slight zoom on hover */
+/* Ensure slides fill the carousel properly */
+#projectCarousel .carousel-inner {
+    height: 100%;
+    display: flex; /* Ensure proper sliding */
+    overflow: hidden; /* Prevent extra white gaps */
 }
+
+/* Fix slide movement */
+#projectCarousel .carousel-item {
+    transition: transform 0.8s ease-in-out; /* Smooth transition */
+    flex: 0 0 100%; /* Ensure each slide takes full width */
+    background-color: transparent; /* Prevent any white wrapping */
+}
+
+/* Image Styling */
+.project-img {
+    max-height: 280px;
+    width: 100%;
+    object-fit: cover; /* Use 'contain' if images are getting cropped */
+    border-radius: 6px;
+}
+
+/* ========================= */
+/* TEXT STYLING (Blending Fix) */
+/* ========================= */
+
+.project-info {
+    background-color: rgba(0, 0, 0, 0.85); /* Softer dark */
+    color: #dddddd; /* Slightly dimmed white */
+    padding: 5px 10px; /* Reduce padding */
+    margin: 0; /* Prevent white gap */
+    border: none; /* Remove any unexpected border */
+    border-radius: 0; /* Ensure full blending */
+}
+
+/* Maintain spacing */
+.project-info h5 {
+    margin-bottom: 3px;
+}
+
+.project-info p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* ========================= */
+/* FIX: Make Next/Previous Buttons Visible (Smaller & Aligned) */
+/* ========================= */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+/* Make navigation buttons smaller */
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    transition: background 0.3s ease-in-out;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Adjust button positioning */
+.carousel-control-prev {
+    left: 1%;
+}
+
+.carousel-control-next {
+    right: 1%;
+}
+
+/* ========================= */
+/* RESPONSIVE DESIGN FIXES */
+/* ========================= */
+
+@media (max-width: 768px) {
+    #projectCarousel {
+        height: auto;
+    }
+
+    .project-info {
+        padding: 3px 6px; /* Reduce padding for mobile */
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+
+
+
 
 
   /*---------------------------------------
