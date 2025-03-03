@@ -55,11 +55,18 @@ Aidan Ingram's Personal Website CSS
     --border-radius-small:  40px;
   }
 
-
-  body {
+body {
+    background-color: var(--background-color); /* Replace with your secondary or muted theme color */
+    border: 10px solid var(--dark-color); /* Creates a subtle frame */
     font-family: var(--base-font-family);
-      padding-top: 80px;
-  }
+    padding-top: 80px; /* Keeps navbar from overlapping content */
+
+    /* Prevent flash at the top before scrolling */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out;
+}
+
 
 
   /*---------------------------------------
@@ -217,207 +224,271 @@ Aidan Ingram's Personal Website CSS
 /* Navbar - Always Visible on Page Load */
 .navbar {
     background: var(--dark-color);
-    padding: 0.3rem 1rem;
+    padding: 0.6rem 1rem; /* Slightly increased padding */
     transition: all 300ms ease-in-out;
-    position: fixed; /* Changed from absolute to fixed */
+    position: fixed;
     z-index: 99;
     top: 0;
     right: 0;
     left: 0;
-    opacity: 1; /* Set to 1 so it's visible on page load */
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    height: 70px; /* Slightly taller navbar */
 }
 
-/* When scrolled down, navbar becomes solid */
+/* When scrolled down, navbar remains solid */
 .navbar.scroll {
     background: var(--dark-color);
     padding: 0.5rem 1rem;
-    opacity: 1; /* Ensure it remains visible */
+    opacity: 1;
 }
 
 .navbar-brand {
-    color: var(--white-color); /* Default text color */
+    color: var(--white-color); /* Ensures text is always visible */
     font-weight: var(--font-weight-light);
-    font-size: var(--h4-font-size);
-    position: relative; /* Needed for the pseudo-element */
-    transition: color 0.3s ease-in-out; /* Smooth text color transition */
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    line-height: 1.2;
+    position: relative;
+    text-decoration: none; /* Removes default underline */
+    transition: color 0.3s ease-in-out;
 }
 
+/* Ensure text color remains on hover */
 .navbar-brand:hover {
-    color: var(--white-color); /* Matches other links */
+    color: var(--white-color) !important; /* Keeps text from disappearing */
 }
 
+/* Underline Effect */
 .navbar-brand::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -0px; /* Adjust spacing from text */
+    bottom: -4px; /* Adjust spacing from text */
     width: 100%;
     height: 2px; /* Thickness of underline */
-    background-color: var(--primary-color); /* Matches hover color */
+    background-color: var(--primary-color); /* Blue underline */
     opacity: 0; /* Initially invisible */
-    transition: opacity 0.3s ease-in-out; /* Fade-in effect */
+    transform: scaleX(0); /* Start with no width */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
+/* Show the underline smoothly on hover */
 .navbar-brand:hover::after {
-    opacity: 1; /* Fade in */
+    opacity: 1;
+    transform: scaleX(1); /* Expand to full width */
 }
 
 
-.navbar .custom-btn {
-    background: var(--primary-color);
-    color: var(--dark-color);
-  }
+/* Navbar Links (Desktop Alignment) */
+.navbar-expand-lg .navbar-nav {
+    display: flex;
+    justify-content: flex-start; /* Shifts links slightly left */
+    margin-left: 4rem; /* Adjust spacing */
+}
 
-  .contact-form #submit-button:hover,
-  .navbar .custom-btn:hover {
-    background: var(--dark-color);
-    color: var(--white-color);
-  }
+/* Navbar Collapse (Dropdown) */
+.navbar-collapse {
+    background: var(--dark-color); /* Solid background */
+    padding: 10px 0;
+    border-radius: 10px;
+    width: 100%; /* Ensures it takes full width */
+}
+
+/* Navbar Links */
+.navbar-nav {
+    width: 100%; /* Ensures full width dropdown */
+    text-align: center;
+}
+
+.navbar-nav .nav-item {
+    width: 100%;
+}
 
 .navbar-expand-lg .navbar-nav .nav-link {
-    margin: 0; /* Reset margin */
-    padding: 0.5rem 1rem; /* Adjust padding for better spacing */
-}
-
-
-  .nav-item .nav-link.active,
-  .nav-item .nav-link:hover {
-    color: var(--gray-color);
-  }
-
-  .nav-item .nav-link.active,
-  .nav-item .nav-link:hover {
-    border-bottom-color: var(--primary-color);
-  }
-
-  .nav-link {
+    margin: 0;
+    padding: 0.5rem 1rem;
     color: var(--gray-color);
     font-weight: var(--font-weight-light);
     font-size: var(--base-font-size);
     border-bottom: 1px solid transparent;
-  }
+}
 
-  .navbar-toggler {
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    margin: 0 10px 0 0;
-    width: 30px;
-    height: 35px;
-    outline: none;
-  }
+/* Active/Hover Links */
+.navbar-nav .nav-link {
+    color: var(--gray-color);
+    font-size: var(--base-font-size);
+    font-weight: var(--font-weight-light);
+    position: relative; /* Needed for the underline effect */
+    text-decoration: none; /* Removes default underline */
+    transition: color 0.3s ease-in-out;
+}
 
-  .navbar-toggler:focus {
-    outline: none;
-  }
-
-  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-    background: transparent;
-  }
-
-  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before,
-  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
-    transition: top 300ms 50ms ease, -webkit-transform 300ms 350ms ease;
-    transition: top 300ms 50ms ease, transform 300ms 350ms ease;
-    transition: top 300ms 50ms ease, transform 300ms 350ms ease, -webkit-transform 300ms 350ms ease;
-    top: 0;
-  }
-
-  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
-    transform: rotate(45deg);
-  }
-
-  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
-    transform: rotate(-45deg);
-  }
-
-
-  .navbar-toggler .navbar-toggler-icon {
-    background: var(--white-color);
-    transition: background 10ms 300ms ease;
-    display: block;
-    width: 30px;
-    height: 2px;
-    position: relative;
-  }
-
-  .navbar-toggler .navbar-toggler-icon::before,
-  .navbar-toggler .navbar-toggler-icon::after {
-    transition: top 300ms 350ms ease, -webkit-transform 300ms 50ms ease;
-    transition: top 300ms 350ms ease, transform 300ms 50ms ease;
-    transition: top 300ms 350ms ease, transform 300ms 50ms ease, -webkit-transform 300ms 50ms ease;
+/* Underline Effect for Navbar Links */
+.navbar-nav .nav-link::after {
+    content: "";
     position: absolute;
-    right: 0;
     left: 0;
-    background: var(--white-color);
-    width: 30px;
-    height: 2px;
-    content: '';
-  }
+    bottom: -4px; /* Adjust spacing */
+    width: 100%;
+    height: 2px; /* Thickness of underline */
+    background-color: var(--primary-color); /* Same blue underline */
+    opacity: 0; /* Initially hidden */
+    transform: scaleX(0); /* Start with no width */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
 
-  .navbar-toggler .navbar-toggler-icon::before {
-    top: -8px;
-  }
+/* Smooth Underline Appears on Hover */
+.navbar-nav .nav-link:hover {
+    color: var(--white-color); /* Keep text color consistent */
+}
 
-  .navbar-toggler .navbar-toggler-icon::after {
-    top: 8px;
-  }
-.navbar-expand-lg .navbar-nav {
-    display: flex;
-    justify-content: center; /* Centers items horizontally */
-    align-items: center; /* Aligns items vertically */
-    width: 100%; /* Ensures it spans the full width */
+.navbar-nav .nav-link:hover::after {
+    opacity: 1;
+    transform: scaleX(1); /* Expands smoothly */
 }
 
 
-/* Mobile-friendly navbar */
+/* Download CV Button */
+.navbar .custom-btn {
+    background: var(--primary-color);
+    color: var(--dark-color);
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+
+.navbar .custom-btn:hover {
+    background: var(--dark-color);
+    color: var(--white-color);
+}
+
+/* Navbar Toggler (Hamburger Menu) */
+/* Ensure Navbar Toggler (Hamburger Menu) is Visible */
+.navbar-toggler {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex; /* Ensure it is visible */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hamburger Icon */
+.navbar-toggler .navbar-toggler-icon {
+    width: 30px;
+    height: 3px;
+    background-color: var(--white-color);
+    position: relative;
+    display: block; /* Ensure it's visible */
+    transition: background 0.3s ease-in-out;
+}
+
+/* Create the three lines for the hamburger */
+.navbar-toggler .navbar-toggler-icon::before,
+.navbar-toggler .navbar-toggler-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background-color: var(--white-color);
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-toggler .navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler .navbar-toggler-icon::after {
+    top: 8px;
+}
+
+/* When Navbar is Open, Transform Icon to 'X' */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background: transparent; /* Hide middle bar */
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 @media screen and (max-width: 991px) {
-    /* Reduce navbar brand size */
+    /* Navbar Brand (Mobile View) */
     .navbar-brand {
-        font-size: 1.2rem; /* Smaller font for mobile */
-        white-space: nowrap; /* Prevents wrapping */
-        max-width: 80%; /* Ensures it doesn't take up too much space */
+        font-size: 1.3rem; /* Smaller text */
+        white-space: nowrap;
+        max-width: 80%;
         overflow: hidden;
-        text-overflow: ellipsis; /* Adds "..." if it's too long */
+        text-overflow: ellipsis;
     }
 
-    /* Adjust navbar spacing */
+    /* Adjust Navbar Padding for Mobile */
     .navbar {
-        padding: 0.8rem 1rem; /* Slightly larger padding for tap-friendly touch */
+        padding: 0.8rem 1rem;
     }
 
-    /* Ensure nav links are stacked and centered */
+    /* Ensure Navbar Links Are Centered in Mobile Dropdown */
     .navbar-nav {
-        flex-direction: column; /* Stacks links vertically */
+        flex-direction: column;
         text-align: center;
         width: 100%;
     }
 
-    /* Ensure nav items fill width */
     .navbar-nav .nav-item {
         width: 100%;
     }
 
-    /* Add padding for better touch interaction */
     .navbar-nav .nav-link {
         padding: 10px;
-        font-size: 1rem; /* Slightly smaller for mobile */
+        font-size: 1rem;
     }
 
-    /* Style the navbar-toggler button */
-    .navbar-toggler {
-        width: 40px;
-        height: 40px;
-        margin-left: auto; /* Keeps it aligned to the right */
-    }
-
-    /* Style navbar dropdown */
+    /* Mobile Dropdown Menu Styling */
     .navbar-collapse {
-        background: var(--dark-color); /* Ensures solid background */
+        width: 100%;
         padding: 10px 0;
+        background: var(--dark-color);
         border-radius: 10px;
     }
+
+    /* Mobile-Friendly Download CV Button */
+    .navbar .custom-btn {
+        font-size: 0.9rem; /* Smaller font */
+        padding: 8px 16px; /* Reduced padding */
+        width: auto; /* Prevents stretching */
+        max-width: 150px; /* Limits width */
+    }
+
+    /* Mobile Navbar Toggler (Fixes 'X' Button Size) */
+    .navbar-toggler {
+        width: 35px;
+        height: 35px;
+    }
+
+    .navbar-toggler .navbar-toggler-icon {
+        width: 20px; /* Adjusted to prevent oversized close button */
+        height: 2px;
+    }
 }
+
 
 
 

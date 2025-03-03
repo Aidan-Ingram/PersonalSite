@@ -39,36 +39,68 @@ $(function () {
     });
 
     // ==============================
-    // Smooth Scrolling for Navbar Links
+    // Smooth Scrolling for Navbar Links (Same Page)
     // ==============================
     $('.navbar .nav-link').on('click', function (event) {
         var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top - 49
-        }, 1000);
-        event.preventDefault();
+        if ($anchor.attr('href').startsWith("#")) {
+            event.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 70
+            }, 1000);
+        }
     });
+
     // ==============================
-// Owl Carousel Initialization
-// ==============================
-    $('#testimonials-carousel').owlCarousel({
-        loop:true,
-        margin:10,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
-            },
-            900:{
-                items:2,
-            },
-            1200:{
-                items:3,
-                loop:false
+    // Smooth Scrolling for Cross-Page Links
+    // ==============================
+    $(document).ready(function () {
+        // Show the page only after it's fully loaded
+        $("body").css("visibility", "visible").css("opacity", "1");
+
+        // If navigating to an anchor (e.g., index.html#about), scroll smoothly after loading
+        if (window.location.hash) {
+            let target = $(window.location.hash);
+            if (target.length) {
+                setTimeout(() => {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 70
+                    }, 800);
+                }, 10); // Tiny delay to prevent flash
             }
         }
-    })
+    });
 
+
+    // ==============================
+    // Page Fade-In Effect (Fixed)
+    // ==============================
+    $("body").css("opacity", "0").css("transition", "opacity 0.4s ease-in-out");
+
+    $(document).ready(function () {
+        $("body").css("opacity", "1");
+    });
+
+    // ==============================
+    // Owl Carousel Initialization
+    // ==============================
+    $('#testimonials-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            900: {
+                items: 2,
+            },
+            1200: {
+                items: 3,
+                loop: false
+            }
+        }
+    });
 
     // ==============================
     // EmailJS Form Submission
