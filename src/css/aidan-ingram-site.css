@@ -405,20 +405,22 @@ Aidan Ingram's Personal Website CSS
   -----------------------------------------*/
 /* Profile picture scaling */
 .about-image {
-    width: 100%; /* Makes the image responsive */
-    max-width: 300px; /* Prevents it from getting too large on big screens */
-    height: auto; /* Maintains aspect ratio */
+    width: 100%;
+    max-width: 300px; /* Prevents image from getting too large */
+    height: auto;
     display: block;
-    margin: 0 auto; /* Centers the image */
+    margin: 0 auto 20px auto; /* Adds space below image to separate it from the chat */
 }
 
 /* Adjust image size for smaller screens */
 @media screen and (max-width: 768px) {
     .about-image {
-        max-width: 200px; /* Reduce image size on smaller screens */
+        max-width: 200px; /* Reduce image size */
+        margin-bottom: 15px; /* Reduce spacing for mobile */
     }
 }
 
+/* Hero Title */
 .hero-title {
     background: var(--dark-color);
     border-radius: var(--border-radius-medium);
@@ -434,20 +436,21 @@ Aidan Ingram's Personal Website CSS
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 600px; /* Slightly larger to match profile image scale */
-    padding: 20px; /* Increased padding for better spacing */
+    max-width: 600px; /* Matches profile image width */
+    padding: 20px;
     background: #f9f9f9;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-top: 20px; /* Adds spacing between the image and chat box */
 }
 
 /* Common message bubble styles */
 .message {
     max-width: 80%;
-    padding: 16px 20px; /* Increased padding for better proportion */
+    padding: 16px 20px;
     margin: 10px 0;
     border-radius: 20px;
-    font-size: clamp(18px, 2vw, 24px); /* Dynamic font scaling */
+    font-size: clamp(18px, 2vw, 24px);
     word-wrap: break-word;
     line-height: 1.5;
 }
@@ -469,15 +472,7 @@ Aidan Ingram's Personal Website CSS
 }
 
 /* Style for email link inside the chat */
-.message.aidan a.email-link {
-    background: var(--primary-color);
-    color: var(--dark-color);
-    text-decoration: underline;
-    padding: 0;
-    font-size: inherit;
-    display: inline;
-}
-
+.message.aidan a.email-link,
 .message.employer a.email-link {
     background: var(--primary-color);
     color: var(--dark-color);
@@ -491,6 +486,20 @@ Aidan Ingram's Personal Website CSS
 .email-link:hover {
     background: var(--dark-color);
     color: var(--white-color);
+}
+
+/* Mobile Optimizations */
+@media screen and (max-width: 768px) {
+    .chat-box {
+        max-width: 90%; /* Prevents the chat box from being too wide */
+        padding: 15px; /* Slightly smaller padding for mobile */
+        margin-top: 15px; /* Reduces space on smaller screens */
+    }
+
+    .message {
+        font-size: clamp(16px, 4vw, 22px); /* Adjusts message text size for mobile */
+        padding: 12px 16px;
+    }
 }
 
 
@@ -730,6 +739,34 @@ Aidan Ingram's Personal Website CSS
   .copyright-text {
     font-size: var(--base-font-size);
   }
+@media screen and (max-width: 768px) {
+    .contact-form {
+        width: 90%; /* Slightly reduces width to make it more compact */
+        max-width: 400px; /* Prevents form from being too wide */
+        padding: 15px; /* Reduces padding */
+    }
+
+    .contact-form .form-control {
+        font-size: 14px; /* Keeps text readable but not too large */
+        height: 40px; /* Makes inputs slightly smaller */
+        padding: 8px 10px; /* Reduces padding inside input fields */
+    }
+
+    .contact-form textarea {
+        height: 80px; /* Keeps textarea usable but not oversized */
+    }
+
+    .contact-form #submit-button {
+        font-size: 14px; /* Reduce button font size slightly */
+        padding: 12px 16px; /* Keeps button touch-friendly but compact */
+        margin-top: 1.5rem; /* Reduces extra spacing above the button */
+    }
+
+    .webform-label {
+        font-size: 11px; /* Slightly smaller label text */
+    }
+}
+
 
 /* Background overlay */
 .popup {
@@ -860,6 +897,183 @@ Aidan Ingram's Personal Website CSS
 .popup-error .popup-content button:hover {
     background: #c82333;
 }
+
+/*---------------------------------------
+   FOOTER + MOBILE SUPPORT
+-----------------------------------------*/
+/* Footer Styling */
+.footer {
+    background: var(--dark-color);
+    color: var(--white-color);
+    padding: 20px 0; /* Keeps it compact */
+    text-align: center;
+}
+
+/* Footer Content - Flexbox Layout */
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Quick Links & Socials Row */
+.footer .footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 5px; /* Reduced unnecessary spacing */
+}
+
+/* Quick Links Styling */
+.footer .list-unstyled {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.footer .list-unstyled li {
+    margin: 3px 0;
+}
+
+/* Social Media Section */
+.footer .socials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 8px; /* Ensures space between title & icons */
+}
+
+/* Links */
+.footer a {
+    color: var(--gray-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer a:hover {
+    color: var(--primary-color);
+}
+
+/* Social Media Icons */
+.footer i {
+    font-size: 20px;
+    color: var(--primary-color);
+    transition: 0.3s;
+}
+
+.footer i:hover {
+    color: var(--gray-color);
+}
+
+/* Witty Contact Link */
+.contact-link {
+    margin-top: 5px;
+    font-size: inherit; /* Ensures it matches surrounding text */
+    font-weight: normal;
+}
+
+/* Fixes the Link Font Size */
+.contact-link a {
+    font-size: inherit; /* Forces it to match the surrounding text */
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link a:hover {
+    color: var(--gray-color);
+}
+
+/* Copyright */
+.copyright-text {
+    font-size: 12px;
+    color: var(--gray-color);
+    margin-top: 3px; /* Reduced from 5px */
+    padding-bottom: 0px; /* Ensures footer sits flush */
+}
+
+/* Mobile Optimization */
+@media screen and (max-width: 768px) {
+    /* Keep Footer Compact */
+    .footer {
+        padding: 15px 0;
+    }
+
+    /* Keep Quick Links & Follow Me Side-by-Side */
+    .footer .footer-links {
+        display: flex;
+        flex-direction: row; /* Ensures they stay in a row */
+        justify-content: space-between; /* Pushes them apart */
+        align-items: flex-start; /* Aligns titles evenly at the top */
+        width: 90%; /* Keeps them centered while giving them space */
+        max-width: 600px; /* Prevents excessive spreading */
+        margin: 0 auto; /* Ensures proper centering */
+    }
+
+    /* Adjust Title Font Size & Alignment */
+    .footer h5 {
+        font-size: 16px; /* Slightly increased from 14px */
+        margin-bottom: 5px; /* Keep spacing tight */
+        text-align: left; /* Ensures alignment consistency */
+    }
+
+    /* Quick Links */
+    .footer .list-unstyled {
+        display: flex;
+        gap: 12px; /* Adds space between the links */
+        padding: 0;
+        list-style: none;
+        margin: 0;
+    }
+
+    /* Social Media Section */
+    .footer .socials {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Social Media Icons */
+    .footer .social-icons {
+        display: flex;
+        gap: 12px; /* Adds space between social icons */
+        margin-top: 5px; /* Keeps spacing even */
+    }
+
+    /* Ensure icons aren't too big */
+    .footer i {
+        font-size: 18px;
+    }
+
+    /* Adjust Witty Contact Link */
+    .contact-link {
+        font-size: 13px;
+        margin-bottom: 3px; /* Reduce space before copyright */
+    }
+
+    /* Reduce Copyright Text Size */
+    .copyright-text {
+        font-size: 11px;
+    }
+}
+
+
+
+
+
+
 
 
 
