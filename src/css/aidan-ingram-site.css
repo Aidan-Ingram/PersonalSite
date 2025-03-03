@@ -56,7 +56,7 @@ Aidan Ingram's Personal Website CSS
   }
 
 body {
-    background-color: #f8f9fa; /* Softer off-white */; /* Replace with your secondary or muted theme color */
+    background-color: #FFFFFF /* Softer off-white */; /* Replace with your secondary or muted theme color */
     border: 10px solid var(--dark-color); /* Creates a subtle frame */
     font-family: var(--base-font-family);
     padding-top: 80px; /* Keeps navbar from overlapping content */
@@ -66,6 +66,7 @@ body {
     visibility: hidden;
     transition: opacity 0.4s ease-in-out;
 }
+
 
 
 
@@ -1211,6 +1212,18 @@ body {
 .contact-link a:hover {
     color: var(--gray-color);
 }
+.footer-logo img {
+    width: 40px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 10px; /* Add spacing between logo and copyright */
+    opacity: 0.8; /* Slight transparency for subtle effect */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.footer-logo img:hover {
+    opacity: 1; /* Full visibility on hover */
+}
+
 
 /* Copyright */
 .copyright-text {
