@@ -283,17 +283,20 @@ body {
     opacity: 1;
     transform: scaleX(1); /* Expand to full width */
 }
-.navbar-image {
-
-    display: flex;
-    align-items: flex-start;
-    padding: 0;
-    margin: 0;
-    line-height: 1.2;
-    position: relative;
-    text-decoration: none; /* Removes default underline */
-    transition: color 0.3s ease-in-out;
+.navbar-image img {
+    height: 40px; /* Adjust the height as needed */
+    width: auto; /* Maintain aspect ratio */
+    display: block;
 }
+
+.navbar-image {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Space between logo and text */
+    position: relative;
+    top: 1px;
+}
+
 
 /* Navbar Links (Desktop Alignment) */
 .navbar-expand-lg .navbar-nav {
@@ -337,6 +340,14 @@ body {
     position: relative; /* Needed for the underline effect */
     text-decoration: none; /* Removes default underline */
     transition: color 0.3s ease-in-out;
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    justify-content: center;
+    height: 100%; /* Matches the navbar height */
+    padding-top: 0.5rem; /* Pushes text down slightly */
+    padding-bottom: 0.5rem; /* Adds balance */
+    line-height: 1.2; /* Ensures text isn't stretched */
+    top: 2px;
 }
 
 /* Underline Effect for Navbar Links */
@@ -497,6 +508,9 @@ body {
     .navbar-toggler .navbar-toggler-icon {
         width: 20px; /* Adjusted to prevent oversized close button */
         height: 2px;
+    }
+    .navbar-image img {
+        height: 35px;
     }
 }
 
