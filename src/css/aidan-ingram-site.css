@@ -283,7 +283,17 @@ body {
     opacity: 1;
     transform: scaleX(1); /* Expand to full width */
 }
+.navbar-image {
 
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
+    line-height: 1.2;
+    position: relative;
+    text-decoration: none; /* Removes default underline */
+    transition: color 0.3s ease-in-out;
+}
 
 /* Navbar Links (Desktop Alignment) */
 .navbar-expand-lg .navbar-nav {
