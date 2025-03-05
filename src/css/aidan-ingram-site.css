@@ -31,6 +31,7 @@ Aidan Ingram's Personal Website CSS
     --white-color:          #ffffff;
     --dark-color:           #212121;
     --menu-bg-color:        #212529;
+    --imessage-gray:        #e5e5ea;
 
     --gray-color:           #909090;
     --p-color:              #7d7a7a;
@@ -576,7 +577,7 @@ body {
 /* Employer messages (left-aligned) */
 .message.employer {
     align-self: flex-start;
-    background-color: var(--primary-color);
+    background-color: var(--imessage-gray);
     color: var(--dark-color);
     text-align: left;
 }
@@ -592,7 +593,7 @@ body {
 /* Style for email link inside the chat */
 .message.aidan a.email-link,
 .message.employer a.email-link {
-    background: var(--primary-color);
+    background: var(--imessage-gray);
     color: var(--dark-color);
     text-decoration: underline;
     padding: 0;
