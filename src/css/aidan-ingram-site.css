@@ -1234,7 +1234,7 @@ body {
 }
 
 .contact-link a:hover {
-    color: var(--gray-color);
+    color: var(--white-color);
 }
 .footer-logo img {
     width: 40px; /* Adjust size as needed */
