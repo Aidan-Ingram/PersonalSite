@@ -206,3 +206,33 @@ $(function () {
         }, 300);
     };
 });
+document.addEventListener("DOMContentLoaded", function () {
+    console.log(
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'Dark mode is enabled'
+            : 'Light mode is enabled'
+    );
+
+    document.body.classList.add("fade-in");
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const logo1 = document.querySelector(".navbar-image img");
+    const logo2 =document.querySelector(".footer-logo img");
+    const darkMode = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function updateLogo(e) {
+        if (e.matches) {
+            logo1.src = "src/images/site_logo_dark.png"; // Dark mode logo
+            logo2.src = "src/images/site_logo_dark.png";
+        } else {
+            logo1.src = "src/images/site_logo.png"; // Light mode logo
+            logo2.src ="src/images/site_logo.png";
+        }
+    }
+
+    // Initial check
+    updateLogo(darkMode);
+
+    // Listen for theme changes
+    darkMode.addEventListener("change", updateLogo);
+});

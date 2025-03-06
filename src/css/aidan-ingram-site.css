@@ -47,6 +47,15 @@ Aidan Ingram's Personal Website CSS
     --failure-button-hover: #c82333;
     --slate-gray:           #2C2F33;
 
+    --box-shadow:                  rgba(0, 0, 0, 0.15);
+    --project-info-background:     rgba(0, 0, 0, 0.85);
+    --carousel-hover:              rgba(0, 0, 0, 0.3);
+    --shadow-background:           rgba(0, 0, 0, 0.1);
+    --contact-form-border:         rgba(142, 140, 140, 0.35);
+    --popup-background:            rgba(0, 0, 0, 0.5);
+    --popup-shadow:                rgba(0, 0, 0, 0.3);
+    --contact-background:          rgba(255, 255, 255, 0.1);
+    --contact-shadow:              rgba(0, 0, 0, 0.2);
 
     --base-font-family:     "Plain", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     --font-weight-bold:     600;
@@ -67,9 +76,11 @@ Aidan Ingram's Personal Website CSS
     --border-radius-medium: 80px;
     --border-radius-small:  40px;
   }
+/* Aidan Ingram's Personal Website CSS */
 
+/* Default background color */
 body {
-    background-color: var(--white-color) /* Softer off-white */; /* Replace with your secondary or muted theme color */
+    background-color: var(--white-color); /* Default white for light mode */
     border: 10px solid var(--dark-color); /* Creates a subtle frame */
     font-family: var(--base-font-family);
     padding-top: 80px; /* Keeps navbar from overlapping content */
@@ -77,8 +88,261 @@ body {
     /* Prevent flash at the top before scrolling */
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s ease-in-out;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 }
+
+/* Smooth fade-in effect */
+body.fade-in {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #4a90e2;
+        --white-color: #ffffff; /* Dark background for light elements in dark mode */
+        --dark-color: #121212;  /* Light color for text and elements in dark mode */
+        --menu-bg-color: #2a2d32;
+        --imessage-gray: #3a3d42;
+        --light-gray-background: #212529;
+        --dimmed-white: #dddddd;
+        --checkmark-green: #21bf73;
+        --popup-subtext: #bbbbbb;
+        --popup-content: #21bf73;
+        --gray-color: #b0b0b0;
+        --p-color: #cccccc;
+        --popup-hover: #0078d4;
+        --popup-error: #ff4c4c;
+        --success-green: #21bf73;
+        --failure-red: #ff4c4c;
+        --slate-gray: #1e1e1e;
+
+        --box-shadow: rgba(255, 255, 255, 0.15);
+        --project-info-background: rgba(255, 255, 255, 0.85);
+        --carousel-hover: rgba(255, 255, 255, 0.3);
+        --shadow-background: rgba(255, 255, 255, 0.1);
+        --contact-form-border: rgba(255, 255, 255, 0.35);
+        --popup-background: rgba(0, 0, 0, 0.7);
+        --popup-shadow: rgba(255, 255, 255, 0.2);
+        --contact-background: rgba(0, 0, 0, 0.3);
+        --contact-shadow: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Dark Mode Body background */
+    body {
+        background-color: var(--dark-color); /* Background color for dark mode */
+        border: 10px solid #444444; /* Light border in dark mode */
+        opacity: 1; /* Ensure content is visible */
+        visibility: visible; /* Make body visible */
+    }
+
+    .mb-0 {
+        color: var(--white)
+    }
+    .mb-4 {
+        color: var(--white);
+    }
+    .mb-5 {
+        color: var(--white);
+    }
+    .mb-7 {
+        color: #a1a1a0;
+    }
+    .section-title {
+        color: var(--white) !important;
+    }
+    .test-desc {
+        color: var(--white);
+    }
+    .faq-info-text {
+        color: var(--white);
+    }
+    .und {
+        color: var(--white);
+    }
+    .und:hover {
+    color: var(--primary-color);
+}
+    .email-link {
+        color: var(--white) !important;
+    }
+    .email-link:hover {
+        color: var(--primary-color) !important;
+    }
+    .chat-box {
+        box-shadow: none !important;
+    }
+    .contact-form-section {
+        background: var(--slate-gray) !important;
+        box-shadow: none !important;
+    }
+    .contact-form .form-group {
+        color: var(--white) !important;
+    }
+    .contact-form .form-control {
+        color: var(--dimmed-white) !important;
+    }
+
+    .contact-info-section {
+        box-shadow: none !important;
+    }
+
+    .popup-message p,
+    .popup-subtext p {
+        color: #111 !important;
+    }
+
+
+    /* Rest of your dark mode styling */
+    .card-header {
+        background-color: #444 !important;
+        color: #ddd !important;
+        border-bottom: 1px solid #666 !important;
+    }
+
+    .card-body {
+        background-color: #555 !important;
+        color: #eee !important;
+    }
+
+    .card-header .btn-link {
+        color: #ddd !important;
+        text-decoration: none;
+    }
+
+    .card-header .btn-link.collapsed {
+        color: #bbb !important;
+    }
+
+    .card-header .btn-link:not(.collapsed) {
+        color: white !important;
+    }
+    .faq .card {
+        border: none !important; /* Removes white border while keeping background */
+        background-color: #444 !important; /* Keeps the FAQ card background gray */
+    }
+
+    .faq .card-header {
+        background-color: #444 !important; /* Keeps the darker gray */
+        color: #ddd !important; /* Ensures text is readable */
+    }
+
+    .faq .card-body p{
+        background-color: #555 !important; /* Slightly lighter gray to maintain contrast */
+        color: #eee !important; /* Keeps text white for readability */
+        border: none !important; /* Ensures no unexpected border */
+    }
+    .message {
+        color: white !important;
+    }
+    .navbar {
+        background-color: #1e1e1e !important; /* Dark background */
+        border-bottom: 1px solid #444; /* Slight border for separation */
+    }
+    .navbar-logo {
+        filter: brightness(0) saturate(100%) invert(32%) sepia(18%) saturate(609%) hue-rotate(155deg) brightness(101%) contrast(102%);
+    }
+
+    .navbar-brand,
+    .nav-link {
+        color: #ddd !important; /* Light text for contrast */
+    }
+    #aboutTabs .nav-item .nav-link.active {
+        color: var(--white) !important; /* Change to a readable color */
+        background-color: #1a1a1a !important; /* Darker background for active tab */
+        border-color: var(--white) !important; /* Matches primary theme */
+
+    }
+
+    /* Optional: Change hover effect for inactive tabs */
+    #aboutTabs .nav-item .nav-link:hover {
+        color: var(--white-color) !important;
+    }
+
+    .navbar-toggler-icon {
+        color: var(--white); /* Make toggler visible in dark mode */
+    }
+    .navbar-collapse {
+        background: #1e1e1e !important; /* Ensures mobile dropdown matches */
+    }
+
+    .navbar-nav .nav-item .nav-link:hover {
+        color: white !important; /* Brighter on hover */
+    }
+    /* ========================= */
+    /* TEXT STYLING (Ensuring Contrast) */
+    /* ========================= */
+
+    .project-info {
+        background-color: #121212 !important; /* Solid black background */
+        color: var(--dimmed-white) !important; /* White text for contrast */
+        padding: 8px 12px; /* Slightly increase padding for better readability */
+        border: none; /* Thin white border to separate text */
+        border-radius: 4px; /* Optional: Slight rounding for smoothness */
+    }
+
+    /* Maintain spacing */
+    .project-info h5 {
+        margin-bottom: 4px;
+
+    }
+
+    .project-info p {
+        margin: 0;
+        font-size: 1rem; /* Slightly larger for readability */
+    }
+
+    /* ========================= */
+    /* IMPROVE PREVIOUS/NEXT BUTTON VISIBILITY */
+    /* ========================= */
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: invert(1) brightness(2); /* Ensures high contrast */
+    }
+
+    /* Make navigation buttons larger & more visible */
+    .carousel-control-prev,
+    .carousel-control-next {
+        background-color: rgba(255, 255, 255, 0.2) !important; /* Light transparent background */
+        width: 45px !important;
+        height: 45px !important;
+        border-radius: 50%;
+        transition: background 0.3s ease-in-out, transform 0.2s;
+    }
+
+    /* Hover effect for better visibility */
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+        background-color: rgba(255, 255, 255, 0.6) !important; /* More visible on hover */
+        transform: scale(1.1); /* Slight pop effect */
+    }
+
+    /* Adjust button positioning */
+    .carousel-control-prev {
+        left: 2%;
+    }
+
+    .carousel-control-next {
+        right: 2%;
+    }
+    /* Darker color for the owl-dots buttons */
+    .owl-dots .owl-dot span {
+        background-color: #444 !important; /* Set a darker color for the inactive dots */
+    }
+
+    /* Darker color for the active owl-dot button */
+    .owl-dots .owl-dot.active span {
+        background-color: var(--primary-color) !important; /* Even darker color for the active dot */
+    }
+
+    .footer {
+        background-color: #1e1e1e !important;
+    }
+}
+
 
 
 
@@ -119,7 +383,7 @@ body {
   }
 
   p {
-    color: var(--p-color);
+    color: #7d7d7a;
     font-size: var(--p-font-size);
     font-weight: var(--font-weight-light);
     letter-spacing: 0.3px;
@@ -571,7 +835,7 @@ body {
     padding: 20px;
     background: var(--light-gray-background);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px var(--box-shadow);
     margin-top: 20px; /* Adds spacing between the image and chat box */
 }
 
@@ -777,7 +1041,7 @@ body {
 /* ========================= */
 
 .project-info {
-    background-color: rgba(0, 0, 0, 0.85); /* Softer dark */
+    background-color: var(--project-info-background); /* Softer dark */
     color: var(--dimmed-white); /* Slightly dimmed white */
     padding: 5px 10px; /* Reduce padding */
     margin: 0; /* Prevent white gap */
@@ -807,7 +1071,7 @@ body {
 /* Make navigation buttons smaller */
 .carousel-control-prev,
 .carousel-control-next {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--shadow-background);
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -816,7 +1080,7 @@ body {
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--carousel-hover);
 }
 
 /* Adjust button positioning */
@@ -906,7 +1170,7 @@ body {
   .contact-form .form-control {
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(142, 140, 140, 0.35);
+    border-bottom: 1px solid var(--contact-form-border);
     box-shadow: none;
     border-radius: 0;
     -webkit-appearance: none;
@@ -1030,7 +1294,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    background: var(--popup-background); /* Dark overlay */
     backdrop-filter: blur(5px); /* Blurred background effect */
     z-index: 1000;
     opacity: 0;
@@ -1049,7 +1313,7 @@ body {
     width: 320px; /* Square shape */
     min-height: 300px; /* Increased height to prevent overflow */
     text-align: center;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 30px var(--popup-shadow);
     animation: slideIn 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -1463,8 +1727,8 @@ body {
     background: var(--white-color);
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px var(--shadow-background);
+    border: 1px solid var(--shadow-background);
 }
 
 /* Contact Info Box */
@@ -1477,7 +1741,7 @@ body {
     padding: 2rem;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--contact-shadow);
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Always 2 columns */
     grid-template-rows: repeat(2, 1fr); /* Always 2 rows */
@@ -1488,7 +1752,7 @@ body {
 
 /* Individual Contact Boxes */
 .contact-info-box {
-    background: rgba(255, 255, 255, 0.1); /* Subtle contrast */
+    background: var(--contact-background); /* Subtle contrast */
     padding: 15px; /* Reduced padding for mobile */
     border-radius: 8px;
     display: flex;
