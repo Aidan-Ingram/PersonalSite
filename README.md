@@ -7,7 +7,8 @@ Welcome to my personal portfolio website! This project showcases my work, skills
 - **🎨 Modern UI** – Clean and professional aesthetic with easy navigation.
 - **📸 Project Carousel** – Showcasing my top projects with thumbnails, descriptions, and GitHub links.
 - **📝 About Me Section** – A brief overview of my background, skills, and goals.
-- **📬 Contact Form** – A way for visitors to reach out directly.
+- **📬 Contact Form** – A way for visitors to reach out directly to my email, via emailJS.
+- **🌑 Dark Mode Support** - Additional CSS and logo matching for users that prefer dark-mode.
 
 ## Technologies Used 🛠️
 - **Frontend:** HTML, CSS (Bootstrap), JavaScript (jQuery, emailJS)
