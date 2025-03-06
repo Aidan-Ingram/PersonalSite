@@ -28,13 +28,25 @@ Aidan Ingram's Personal Website CSS
 
   :root {
     --primary-color:        #89CFF0;
-    --white-color:          #ffffff;
+    --white-color:          #FFFFFF;
     --dark-color:           #212121;
     --menu-bg-color:        #212529;
     --imessage-gray:        #e5e5ea;
-
+    --light-gray-background:#f9f9f9;
+    --dimmed-white:         #dddddd;
+    --checkmark-green:      #28a745;
+    --popup-subtext:        #555;
+    --popup-content:        #28a745;
     --gray-color:           #909090;
     --p-color:              #7d7a7a;
+    --popup-hover:          #0056b3;
+    --popup-error:          #dc3545;
+    --success-green:        #28a745;
+    --success-button-hover: #218838;
+    --failure-red:          #dc3545;
+    --failure-button-hover: #c82333;
+    --slate-gray:           #2C2F33;
+
 
     --base-font-family:     "Plain", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     --font-weight-bold:     600;
@@ -57,7 +69,7 @@ Aidan Ingram's Personal Website CSS
   }
 
 body {
-    background-color: #FFFFFF /* Softer off-white */; /* Replace with your secondary or muted theme color */
+    background-color: var(--white-color) /* Softer off-white */; /* Replace with your secondary or muted theme color */
     border: 10px solid var(--dark-color); /* Creates a subtle frame */
     font-family: var(--base-font-family);
     padding-top: 80px; /* Keeps navbar from overlapping content */
@@ -557,7 +569,7 @@ body {
     width: 100%;
     max-width: 600px; /* Matches profile image width */
     padding: 20px;
-    background: #f9f9f9;
+    background: var(--light-gray-background);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     margin-top: 20px; /* Adds spacing between the image and chat box */
@@ -766,7 +778,7 @@ body {
 
 .project-info {
     background-color: rgba(0, 0, 0, 0.85); /* Softer dark */
-    color: #dddddd; /* Slightly dimmed white */
+    color: var(--dimmed-white); /* Slightly dimmed white */
     padding: 5px 10px; /* Reduce padding */
     margin: 0; /* Prevent white gap */
     border: none; /* Remove any unexpected border */
@@ -847,7 +859,7 @@ body {
   -----------------------------------------*/
 
   .testimonials {
-    background: #f9f9f9;
+    background: var(--light-gray-background);
   }
 
 .testimonials-image {
@@ -1061,7 +1073,7 @@ body {
 /* Checkmark icon */
 .popup-icon {
     font-size: 48px;
-    color: #28a745; /* Green checkmark */
+    color: var(--checkmark-green); /* Green checkmark */
     margin-bottom: 10px;
 }
 
@@ -1075,7 +1087,7 @@ body {
 /* Subtext under main message */
 .popup-subtext {
     font-size: 14px;
-    color: #555;
+    color: var(--popup-subtext);
     margin-bottom: 15px;
 }
 
@@ -1084,7 +1096,7 @@ body {
     padding: 12px 20px; /* Ensures a comfortable click area */
     width: 80%; /* Keeps the button within bounds */
     max-width: 200px; /* Prevents overflow */
-    background: #28a745;
+    background: var(--popup-content);
     color: white;
     border: none;
     cursor: pointer;
@@ -1098,7 +1110,7 @@ body {
 
 /* Button hover effect */
 .popup-content button:hover {
-    background: #0056b3;
+    background: var(--popup-hover);
 }
 
 /* Show pop-up effect */
@@ -1108,7 +1120,7 @@ body {
 }
 
 .popup-error .popup-icon i {
-    color: #dc3545; /* Red for error */
+    color: var(--popup-error); /* Red for error */
 }
 @media (max-width: 400px) {
     .popup-content {
@@ -1124,20 +1136,20 @@ body {
 }
 /* Success Popup */
 .popup-success .popup-content button {
-    background: #28a745; /* Green for success */
+    background: var(--success-green); /* Green for success */
 }
 
 .popup-success .popup-content button:hover {
-    background: #218838;
+    background: var(--success-button-hover);
 }
 
 /* Error Popup */
 .popup-error .popup-content button {
-    background: #dc3545; /* Red for error */
+    background: var(--failure-red); /* Red for error */
 }
 
 .popup-error .popup-content button:hover {
-    background: #c82333;
+    background: var(--failure-button-hover);
 }
 
 /*---------------------------------------
@@ -1448,7 +1460,7 @@ body {
 .contact-form-section {
     flex: 1;
     max-width: 600px;
-    background: #ffffff;
+    background: var(--white-color);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -1460,8 +1472,8 @@ body {
 /* Contact Info Section - Dark Slate Gray */
 /* Contact Info Section - Always a 2x2 Grid */
 .contact-info-section {
-    background: #2C2F33; /* Dark Slate Gray */
-    color: #ffffff;
+    background: var(--slate-gray); /* Dark Slate Gray */
+    color: var(--white-color);
     padding: 2rem;
     border-radius: 12px;
     text-align: center;
@@ -1507,7 +1519,7 @@ body {
 
 /* Links */
 .contact-info-box a {
-    color: #ffffff;
+    color: var(--white-color);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease-in-out;
