@@ -1817,6 +1817,33 @@ body.fade-in {
         font-size: 12px; /* Small but readable */
     }
 }
+.pdf-container {
+    width: 100%;
+    max-width: 900px; /* Prevents it from being too wide */
+    margin: 0 auto; /* Centers it */
+    height: calc(100vh - 120px); /* Uses full screen height minus some margin */
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pdf-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+/* Adjust spacing for mobile */
+@media screen and (max-width: 768px) {
+    .pdf-container {
+        width: 95%;
+        height: 70vh;
+        margin: 20px auto; /* Ensures margin consistency */
+    }
+}
+
 
 
 
