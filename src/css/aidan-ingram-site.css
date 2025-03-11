@@ -1845,6 +1845,8 @@ body.fade-in {
 @media screen and (max-width: 768px) {
     .pdf-desktop {
         display: none;
+        visibility: hidden;
+        height: 0;
     }
     .pdf-mobile {
         display: block;
@@ -1852,6 +1854,7 @@ body.fade-in {
         margin-top: 20px;
     }
 }
+
 
 
 
