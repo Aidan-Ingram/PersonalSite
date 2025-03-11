@@ -1819,28 +1819,30 @@ body.fade-in {
 }
 .pdf-container {
     width: 100%;
-    max-width: 900px; /* Prevents it from being too wide */
-    margin: 0 auto; /* Centers it */
-    height: calc(100vh - 120px); /* Uses full screen height minus some margin */
+    max-width: 900px;
+    margin: 0 auto;
+    height: 100vh;
     padding-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Prevents unwanted scrolling */
 }
 
 .pdf-container iframe {
     width: 100%;
     height: 100%;
     border: none;
+    transform: scale(1); /* Ensures no initial zoom */
+    transform-origin: top left;
 }
 
-
-/* Adjust spacing for mobile */
+/* Adjust for mobile */
 @media screen and (max-width: 768px) {
     .pdf-container {
-        width: 95%;
-        height: 70vh;
-        margin: 20px auto; /* Ensures margin consistency */
+        width: 100%;
+        height: 80vh; /* Increase height slightly for better view */
+        margin: 10px auto;
     }
 }
 
