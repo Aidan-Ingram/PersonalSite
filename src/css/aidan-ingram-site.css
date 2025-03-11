@@ -1826,25 +1826,33 @@ body.fade-in {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Prevents unwanted scrolling */
 }
 
-.pdf-container iframe {
+/* Only show iframe on desktop */
+.pdf-desktop {
     width: 100%;
     height: 100%;
     border: none;
-    transform: scale(1); /* Ensures no initial zoom */
-    transform-origin: top left;
 }
 
-/* Adjust for mobile */
+/* Hide mobile message on desktop */
+.pdf-mobile {
+    display: none;
+    text-align: center;
+}
+
+/* On mobile, hide iframe and show download link */
 @media screen and (max-width: 768px) {
-    .pdf-container {
-        width: 100%;
-        height: 80vh; /* Increase height slightly for better view */
-        margin: 10px auto;
+    .pdf-desktop {
+        display: none;
+    }
+    .pdf-mobile {
+        display: block;
+        font-size: 1.1rem;
+        margin-top: 20px;
     }
 }
+
 
 
 
